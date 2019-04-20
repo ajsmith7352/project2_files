@@ -831,13 +831,15 @@ chart.data = [
 chart.dateFormatter.inputDateFormat = "yyyy-MM-dd HH:mm";
 
 
-chart.legend = new am4charts.Legend();
-chart.legend.useDefaultMarker = true;
-var marker = chart.legend.markers.template.children.getIndex(0);
-marker.cornerRadius(12, 12, 12, 12);
-marker.strokeWidth = 2;
-marker.strokeOpacity = 1;
-marker.stroke = am4core.color("#ccc");              
+var legend = new am4charts.Legend();
+legend.isMeasured = true;
+legend.y = am4core.percent(100);
+legend.verticalCenter = "bottom";
+legend.parent = chart.chartContainer;
+legend.data = [{
+"name": "Difference of Actual Weather",
+"fill": chart.colors.getIndex(0)
+}];                          
 
 // Create axes
 var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
